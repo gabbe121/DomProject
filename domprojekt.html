@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="domprojket.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #timeDisplay {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            font-size: 24px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <img src="sam-moghadam-khamseh-cU5TUyEaZXQ-unsplash.jpg" class="img1">
+    <div class="container">
+        <button onclick="changeBackground()">Change BG</button>
+        <button onclick="changePicture()">Change Picture</button>
+        <button onclick="changeHeader()">Header</button>
+        <button onclick="showText()" id="goodVibesBtn">Good Vibes</button>
+        <button onclick="hidePicture()">Hide Picture</button>
+        <button onclick="removeHeader()">Remove Header</button>
+        <button onclick="showTime()" id="timeBtn">Time</button>
+        <button onclick="showPicture()">Show Picture</button>
+        <button onclick="showHeader()">Show Header</button>
+    </div>
+
+    <div id="timeDisplay"></div>
+
+    <script>
+        function changeBackground() {
+            document.body.style.backgroundColor = "lightblue";
+        }
+        
+        function changePicture() {
+            var image = document.querySelector('.img1');
+            image.src = 'them-snapshots-40U4YEffPgE-unsplash.jpg';
+        }
+        
+        function showText() {
+            var container = document.querySelector('.container');
+            var image = document.querySelector('.img1');
+            var textOverlay = document.querySelector('.text-overlay');
+
+            if (!textOverlay) {
+                textOverlay = document.createElement('div');
+                textOverlay.classList.add('text-overlay');
+                textOverlay.innerText = 'be the best you';
+                container.appendChild(textOverlay);
+                image.style.marginTop = '100px'; // Uppdaterad rad
+            }
+
+            image.style.pointerEvents = 'none';
+            document.getElementById('goodVibesBtn').disabled = true;
+        }
+
+        function showTime() {
+            var timeDisplay = document.getElementById("timeDisplay");
+            if (!timeDisplay) {
+                timeDisplay = document.createElement("div");
+                timeDisplay.setAttribute("id", "timeDisplay");
+                document.body.appendChild(timeDisplay);
+            }
+
+            var currentDateTime = new Date();
+            var timeString = currentDateTime.toLocaleTimeString();
+
+            timeDisplay.textContent = timeString;
+
+            var windowHeight = window.innerHeight;
+            timeDisplay.style.top = (windowHeight - 550) + "px";
+        }
+        function hidePicture() {
+    var image = document.querySelector('.img1');
+    image.style.display = 'none';
+}
+function showPicture() {
+    var image = document.querySelector('.img1');
+    image.style.display = 'block';
+}
+
+    </script>
+</body>
+</html>
